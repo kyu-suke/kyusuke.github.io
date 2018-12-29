@@ -1,0 +1,16 @@
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>SwitchSoulMonarch changelog</title>
+    <link>https://kyu-suke.github.io/appcast.xml</link>
+    <description>SwitchSoulMonarch update changelog.</description>
+    <item>
+      <title>SwitchSoulMonarch 0.0.1</title>
+      <sparkle:releaseNotesLink xml:lang="en">https://kyu-suke.github.io/releasenotes/0.0.1.en.html</sparkle:releaseNotesLink>
+      <sparkle:releaseNotesLink xml:lang="ja">https://kyu-suke.github.io/releasenotes/0.0.1.ja.html</sparkle:releaseNotesLink>
+      <pubDate>Tue, 1 Jan 2019 05:00:00 +0900</pubDate>
+      <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
+      <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.2.1/switchsoulmonarch.2.1.dmg" sparkle:version="0.0.1" length="20190101" type="application/octet-stream" sparkle:dsaSignature="MEUCIQCzI0bDXiLVoOSGkTUxBYR9ChqPaBO+McG/B4p6mjvghQIgXBZrx6XIjfCkgMqnD1nNhw8ERYFpudRKeIAhoaRu3gg="/>
+    </item>
+  </channel>
+</rss>
+

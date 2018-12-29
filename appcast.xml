@@ -9,7 +9,7 @@
       <sparkle:releaseNotesLink xml:lang="ja">https://kyu-suke.github.io/releasenotes/0.0.1.ja.html</sparkle:releaseNotesLink>
       <pubDate>Tue, 1 Jan 2019 05:00:00 +0900</pubDate>
       <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
-      <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/0.0.1/SwitchSoulMonarch_0.0.1.dmg" sparkle:version="0.0.1" length="20190101" type="application/octet-stream" sparkle:dsaSignature="MEUCIGHLR6Cki5W9+8riOggW96dcJWtj0CcNu+eZevhaBKVGAiEApClUrg9bFaj24LIIkZpdVKtaIjPcntV1yzztplrmA64="/>
+      <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/0.0.1/SwitchSoulMonarch_0.0.1.dmg" sparkle:version="1.2.1" length="20190101" type="application/octet-stream" sparkle:dsaSignature="MEUCIGHLR6Cki5W9+8riOggW96dcJWtj0CcNu+eZevhaBKVGAiEApClUrg9bFaj24LIIkZpdVKtaIjPcntV1yzztplrmA64="/>
     </item>
   </channel>
 </rss>

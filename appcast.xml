@@ -1,24 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
-  <channel>
-    <title>SwitchSoulMonarch changelog</title>
-    <link>https://kyu-suke.github.io/appcast.xml</link>
-    <description>SwitchSoulMonarch update changelog.</description>
-    <item>
-      <title>SwitchSoulMonarch 0.0.2</title>
-      <sparkle:releaseNotesLink xml:lang="en">https://kyu-suke.github.io/releasenotes/0.0.1.en.html</sparkle:releaseNotesLink>
-      <sparkle:releaseNotesLink xml:lang="ja">https://kyu-suke.github.io/releasenotes/0.0.1.ja.html</sparkle:releaseNotesLink>
-      <pubDate>Tue, 1 Jan 2019 05:00:00 +0900</pubDate>
-      <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
-      <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/0.0.2/switchsoulmonarch_0.0.2.dmg" sparkle:version="1.0.2" length="20190101" type="application/octet-stream" sparkle:dsaSignature="CdNcftN8wWG6Jruu0PXNB/HWCmxMNQs="/>
-    </item>
-    <item>
-      <title>SwitchSoulMonarch 0.0.1</title>
-      <sparkle:releaseNotesLink xml:lang="en">https://kyu-suke.github.io/releasenotes/0.0.1.en.html</sparkle:releaseNotesLink>
-      <sparkle:releaseNotesLink xml:lang="ja">https://kyu-suke.github.io/releasenotes/0.0.1.ja.html</sparkle:releaseNotesLink>
-      <pubDate>Tue, 1 Jan 2019 05:00:00 +0900</pubDate>
-      <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
-      <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/0.0.1/switchsoulmonarch_0.0.1.dmg" sparkle:version="0.0.1" length="20190101" type="application/octet-stream" sparkle:dsaSignature="sWCoQRTMl5ptLoZJN/zAG1LTKkuiIg=="/>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+<channel>
+<title>switchsoulmonarch</title>
+<item>
+<title>1.0</title>
+<pubDate>火, 01 1月 2019 00:28:58 +0900</pubDate>
+<sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.0.1/switchsoulmonarch.zip" sparkle:version="1.0.1" sparkle:shortVersionString="1.0.1" length="5303798" type="application/octet-stream"/>
+</item>
+</channel></rss>

@@ -3,8 +3,8 @@
 <title>switchsoulmonarch</title>
 <item>
 <title>1.0</title>
-<pubDate>日, 06 1月 2019 01:02:24 +0900</pubDate>
+<pubDate>日, 06 1月 2019 02:01:16 +0900</pubDate>
 <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.0.1/switchsoulmonarch.zip" sparkle:version="1.0.1" sparkle:shortVersionString="1.0.1" type="application/octet-stream" sparkle:edSignature="v+H96hAnU1oYwR81G8Ezn50QrYjxgWwSR1Wdwff+HTe82pQqsOBEuJTdWoangbKk9VYK/Z/sUjtMFZ9y/qhwCg==" length="5303886"/>
+<enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.0.1/switchsoulmonarch.zip" sparkle:version="1" sparkle:shortVersionString="1.0" sparkle:edSignature="RWsPE+iaKaMsKLLKqLrz6a/qnxTX8oNxgucd1CaEypIZDV3YDen0sd/LIonZVCmu2hORgeUa76VAMQkln5HECQ==" length="5303531" type="application/octet-stream"/>
 </item>
 </channel></rss>

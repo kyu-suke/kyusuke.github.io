@@ -3,11 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <title>hoge</title>
+<link rel="manifest" href="/manifest.json">
 </head>
 <body>
 <h1>hoge</h1>
 <h1>hoge</h1>
+<h1>fuga</h1>
 </body>
+<script>
+  window.addEventListener('load', function () {
+    if ('serviceWorker' in navigator) {
+            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+      navigator.serviceWorker.register("/service-worker.js", {scope: "/"})
+          .then(function (registration) {
+            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+            console.log("serviceWorker registed.");
+          }).catch(function (error) {
+            alert(error)
+        console.warn("serviceWorker error.", error);
+      });
+    }
+  });
+
+  window.addEventListener('beforeinstallprompt', function(e) {
+    // beforeinstallprompt Event fired
+    // e.userChoice will return a Promise.
+    // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
+    e.userChoice.then(function(choiceResult) {
+
+      console.log(choiceResult.outcome);
+
+      if(choiceResult.outcome == 'dismissed') {
+        console.log('User cancelled home screen install');
+      }
+      else {
+        console.log('User added to home screen');
+      }
+    });
+  });
+</script>
 </html>
+
 
 

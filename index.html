@@ -1,48 +1,24 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>hoge</title>
-<link rel="manifest" href="/manifest.json">
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
+  <link href="css.css" rel="stylesheet">
+
+
+  <script src="js.js"></script>
 </head>
+
 <body>
-<h1>hoge</h1>
-<h1>hoge</h1>
-<h1>fuga</h1>
+  <div id="elm"></div>
+  <script>
+  var app = Elm.Main.init({
+    node: document.getElementById('elm')
+  });
+  </script>
 </body>
-<script>
-  window.addEventListener('load', function () {
-    if ('serviceWorker' in navigator) {
-            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-      navigator.serviceWorker.register("/service-worker.js", {scope: "/"})
-          .then(function (registration) {
-            console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-            console.log("serviceWorker registed.");
-          }).catch(function (error) {
-            alert(error)
-        console.warn("serviceWorker error.", error);
-      });
-    }
-  });
-
-  window.addEventListener('beforeinstallprompt', function(e) {
-    // beforeinstallprompt Event fired
-    // e.userChoice will return a Promise.
-    // For more details read: https://developers.google.com/web/fundamentals/getting-started/primers/promises
-    e.userChoice.then(function(choiceResult) {
-
-      console.log(choiceResult.outcome);
-
-      if(choiceResult.outcome == 'dismissed') {
-        console.log('User cancelled home screen install');
-      }
-      else {
-        console.log('User added to home screen');
-      }
-    });
-  });
-</script>
 </html>
-
 
 

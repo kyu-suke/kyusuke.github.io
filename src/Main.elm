@@ -59,11 +59,33 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div
-        [ class "content" ]
-        [ div []
-            [ div [] [ text "hoge" ]
-            , div [ style "display" "block" ] [ text "fuga" ]
+    div [ class "container" ]
+        [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") topList)
+        , div [ class "secondWindow nes-container is-rounded is-dark" ] (List.map (checkItem "second") topList)
+        ]
+
+
+topList : List String
+topList =
+    [ "status", "works", "links", "bio", "skills", "setting" ]
+
+
+checkItem : String -> String -> Html Msg
+checkItem inputName inputLabel =
+    let
+        attrs =
+            if inputLabel == "status" then
+                [ attribute "checked" "", class "nes-radio is-dark", name inputName, type_ "radio" ]
+
+            else
+                [ class "nes-radio is-dark", name inputName, type_ "radio" ]
+    in
+    p []
+        [ label []
+            [ input attrs
+                []
+            , span []
+                [ text inputLabel ]
             ]
         ]
 

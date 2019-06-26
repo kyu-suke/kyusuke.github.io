@@ -4818,9 +4818,20 @@ var elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
-var elm$html$Html$div = _VirtualDom_node('div');
+var elm$html$Html$input = _VirtualDom_node('input');
+var elm$html$Html$label = _VirtualDom_node('label');
+var elm$html$Html$p = _VirtualDom_node('p');
+var elm$html$Html$span = _VirtualDom_node('span');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
+var elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var elm$html$Html$Attributes$attribute = elm$virtual_dom$VirtualDom$attribute;
 var elm$json$Json$Encode$string = _Json_wrap;
 var elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -4830,65 +4841,45 @@ var elm$html$Html$Attributes$stringProperty = F2(
 			elm$json$Json$Encode$string(string));
 	});
 var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
-var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
-var author$project$Main$view = function (model) {
-	return A2(
-		elm$html$Html$div,
-		_List_fromArray(
+var elm$html$Html$Attributes$name = elm$html$Html$Attributes$stringProperty('name');
+var elm$html$Html$Attributes$type_ = elm$html$Html$Attributes$stringProperty('type');
+var author$project$Main$checkItem = F2(
+	function (inputName, inputLabel) {
+		var attrs = (inputLabel === 'status') ? _List_fromArray(
 			[
-				elm$html$Html$Attributes$class('content')
-			]),
-		_List_fromArray(
+				A2(elm$html$Html$Attributes$attribute, 'checked', ''),
+				elm$html$Html$Attributes$class('nes-radio is-dark'),
+				elm$html$Html$Attributes$name(inputName),
+				elm$html$Html$Attributes$type_('radio')
+			]) : _List_fromArray(
 			[
-				A2(
-				elm$html$Html$div,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$div,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('hoge')
-							])),
-						A2(
-						elm$html$Html$div,
-						_List_fromArray(
-							[
-								A2(elm$html$Html$Attributes$style, 'display', 'block')
-							]),
-						_List_fromArray(
-							[
-								elm$html$Html$text('fuga')
-							]))
-					]))
-			]));
-};
-var elm$browser$Browser$External = function (a) {
-	return {$: 'External', a: a};
-};
-var elm$browser$Browser$Internal = function (a) {
-	return {$: 'Internal', a: a};
-};
-var elm$browser$Browser$Dom$NotFound = function (a) {
-	return {$: 'NotFound', a: a};
-};
-var elm$core$Basics$never = function (_n0) {
-	never:
-	while (true) {
-		var nvr = _n0.a;
-		var $temp$_n0 = nvr;
-		_n0 = $temp$_n0;
-		continue never;
-	}
-};
-var elm$core$Task$Perform = function (a) {
-	return {$: 'Perform', a: a};
-};
-var elm$core$Task$succeed = _Scheduler_succeed;
-var elm$core$Task$init = elm$core$Task$succeed(_Utils_Tuple0);
+				elm$html$Html$Attributes$class('nes-radio is-dark'),
+				elm$html$Html$Attributes$name(inputName),
+				elm$html$Html$Attributes$type_('radio')
+			]);
+		return A2(
+			elm$html$Html$p,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A2(
+					elm$html$Html$label,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(elm$html$Html$input, attrs, _List_Nil),
+							A2(
+							elm$html$Html$span,
+							_List_Nil,
+							_List_fromArray(
+								[
+									elm$html$Html$text(inputLabel)
+								]))
+						]))
+				]));
+	});
+var author$project$Main$topList = _List_fromArray(
+	['status', 'works', 'links', 'bio', 'skills', 'setting']);
 var elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -4958,6 +4949,61 @@ var elm$core$List$map = F2(
 			_List_Nil,
 			xs);
 	});
+var elm$html$Html$div = _VirtualDom_node('div');
+var author$project$Main$view = function (model) {
+	return A2(
+		elm$html$Html$div,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('container')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('firstWindow nes-container is-rounded is-dark')
+					]),
+				A2(
+					elm$core$List$map,
+					author$project$Main$checkItem('first'),
+					author$project$Main$topList)),
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('secondWindow nes-container is-rounded is-dark')
+					]),
+				A2(
+					elm$core$List$map,
+					author$project$Main$checkItem('second'),
+					author$project$Main$topList))
+			]));
+};
+var elm$browser$Browser$External = function (a) {
+	return {$: 'External', a: a};
+};
+var elm$browser$Browser$Internal = function (a) {
+	return {$: 'Internal', a: a};
+};
+var elm$browser$Browser$Dom$NotFound = function (a) {
+	return {$: 'NotFound', a: a};
+};
+var elm$core$Basics$never = function (_n0) {
+	never:
+	while (true) {
+		var nvr = _n0.a;
+		var $temp$_n0 = nvr;
+		_n0 = $temp$_n0;
+		continue never;
+	}
+};
+var elm$core$Task$Perform = function (a) {
+	return {$: 'Perform', a: a};
+};
+var elm$core$Task$succeed = _Scheduler_succeed;
+var elm$core$Task$init = elm$core$Task$succeed(_Utils_Tuple0);
 var elm$core$Task$andThen = _Scheduler_andThen;
 var elm$core$Task$map = F2(
 	function (func, taskA) {

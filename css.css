@@ -3,3 +3,13 @@ body {
 	color: #fff;
 }
 
+.container {
+	width: 200px;
+	margin: 40px;
+}
+
+.nes-container.is-dark.secondWindow {
+	position: absolute;
+	top: 100px;
+	left: 85px;
+}

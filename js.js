@@ -4879,7 +4879,7 @@ var author$project$Main$checkItem = F2(
 				]));
 	});
 var author$project$Main$topList = _List_fromArray(
-	['status', 'works', 'links', 'bio', 'skills', 'setting']);
+	['status', 'works', 'links', 'bio', 'skills', 'setting', 'ほげほげ']);
 var elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {

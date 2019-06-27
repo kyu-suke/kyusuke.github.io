@@ -67,7 +67,7 @@ view model =
 
 topList : List String
 topList =
-    [ "status", "works", "links", "bio", "skills", "setting" ]
+    [ "status", "works", "links", "bio", "skills", "setting", "ほげほげ" ]
 
 
 checkItem : String -> String -> Html Msg

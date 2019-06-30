@@ -28,12 +28,12 @@ main =
 
 
 type alias Model =
-    {}
+    { s : String }
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( {}
+    ( { s = "asdf" }
     , Cmd.none
     )
 
@@ -43,12 +43,24 @@ init _ =
 
 
 type Msg
-    = None
+    = Change String
+    | None
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        Change s ->
+            if s == "ArrowUp" then
+                ( { model | s = s }, Cmd.none )
+
+            else if s == "ArrowDown" then
+                ( { model | s = s }, Cmd.none )
+
+            else
+                update (ChangeKey "") model
+
+        -- ( model, Cmd.none )
         None ->
             ( model, Cmd.none )
 
@@ -60,21 +72,21 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") topList)
-        , div [ class "secondWindow nes-container is-rounded is-dark" ] (List.map (checkItem "second") topList)
+        [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") (topList ++ [ model.s ]))
+        , div [ class "hidden secondWindow nes-container is-rounded is-dark" ] (List.map (checkItem "second") topList)
         ]
 
 
 topList : List String
 topList =
-    [ "status", "works", "links", "bio", "skills", "setting", "ほげほげ" ]
+    [ "つよさ", "とくぎ", "どうぐ", "いどう" ]
 
 
 checkItem : String -> String -> Html Msg
 checkItem inputName inputLabel =
     let
         attrs =
-            if inputLabel == "status" then
+            if inputLabel == "つよさ" then
                 [ attribute "checked" "", class "nes-radio is-dark", name inputName, type_ "radio" ]
 
             else
@@ -96,4 +108,18 @@ checkItem inputName inputLabel =
 
 subscriptions : Model -> Sub Msg
 subscriptions model =
-    Sub.batch []
+    Sub.batch
+        [ onKeyDown (Decode.map Change (Decode.field "key" Decode.string))
+        ]
+
+moveChecked : List (String, String) -> String -> List (String, String)
+moveChecked list key =
+    case list of
+        x :: xs ->
+            if Tuple.second x == "checked" then
+                [(Tuple.first x, "")] ++ [次のやつtail head] ++ [tail]
+                case result of
+                    Just hoge -> model
+                    _ -> list
+            else
+                moveChecked hoge hoge

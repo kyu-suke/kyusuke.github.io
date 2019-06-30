@@ -13,3 +13,7 @@ body {
 	top: 100px;
 	left: 85px;
 }
+
+.hidden {
+	display: none;
+}

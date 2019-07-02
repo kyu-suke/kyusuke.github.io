@@ -39,6 +39,8 @@ type alias Model =
 type alias ShowWindow =
     { fst : String
     , snd : String
+    , trd : String
+    , fth : String
     }
 
 
@@ -57,6 +59,8 @@ init _ =
 showContent =
     { fst = "hidden"
     , snd = "hidden"
+    , trd = "hidden"
+    , fth = "hidden"
     }
 
 
@@ -87,6 +91,9 @@ update msg model =
                     _ ->
                         ( model, Cmd.none )
 
+            else if s == "Backspace" then
+                ( { model | showWindow = showContent }, Cmd.none )
+
             else
                 ( model, Cmd.none )
 
@@ -103,8 +110,16 @@ view : Model -> Html Msg
 view model =
     div [ class "container" ]
         [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") model.menus)
-        , div [ class model.showWindow.fst, class "secondWindow nes-container is-rounded is-dark" ] [ text "はじめ" ]
-        , div [ class model.showWindow.snd, class "secondWindow nes-container is-rounded is-dark" ] [ text "にばんめ" ]
+        , div [ class model.showWindow.fst, class "secondWindow nes-container is-rounded is-dark" ] [ text "しかし 何も 見つからなかった" ]
+        , div [ class model.showWindow.snd, class "secondWindow nes-container is-rounded is-dark" ] [ text "なんと バグを 見つけた" ]
+        , div [ class model.showWindow.trd, class "secondWindow nes-container is-rounded is-dark" ]
+            [ p [] [ a [ target "_blank", href "https://qsk.netlify.com/" ] [ text "typing" ] ]
+            ]
+        , div [ class model.showWindow.fth, class "secondWindow nes-container is-rounded is-dark" ]
+            [ p [] [ a [ target "_blank", href "https://twitter.com/8140i2865_3" ] [ text "twitter" ] ]
+            , p [] [ a [ target "_blank", href "https://github.com/kyu-suke" ] [ text "github" ] ]
+            , p [] [ a [ target "_blank", href "https://homedogheavy.hatenablog.com/" ] [ text "homedogheavy" ] ]
+            ]
         ]
 
 
@@ -191,6 +206,12 @@ showWindow t =
 
         "とくぎ" ->
             { showContent | snd = "" }
+
+        "どうぐ" ->
+            { showContent | trd = "" }
+
+        "いどう" ->
+            { showContent | fth = "" }
 
         _ ->
             showContent

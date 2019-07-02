@@ -4310,7 +4310,7 @@ function _Browser_load(url)
 		}
 	}));
 }
-var author$project$Main$showContent = {fst: 'hidden', snd: 'hidden'};
+var author$project$Main$showContent = {fst: 'hidden', fth: 'hidden', snd: 'hidden', trd: 'hidden'};
 var elm$core$Basics$False = {$: 'False'};
 var elm$core$Basics$True = {$: 'True'};
 var elm$core$Result$isOk = function (result) {
@@ -5625,6 +5625,14 @@ var author$project$Main$showWindow = function (t) {
 			return _Utils_update(
 				author$project$Main$showContent,
 				{snd: ''});
+		case 'どうぐ':
+			return _Utils_update(
+				author$project$Main$showContent,
+				{trd: ''});
+		case 'いどう':
+			return _Utils_update(
+				author$project$Main$showContent,
+				{fth: ''});
 		default:
 			return author$project$Main$showContent;
 	}
@@ -5691,7 +5699,15 @@ var author$project$Main$update = F2(
 							return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
 						}
 					} else {
-						return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+						if (s === 'Backspace') {
+							return _Utils_Tuple2(
+								_Utils_update(
+									model,
+									{showWindow: author$project$Main$showContent}),
+								elm$core$Platform$Cmd$none);
+						} else {
+							return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+						}
 					}
 				}
 			}
@@ -5757,7 +5773,15 @@ var author$project$Main$checkItem = F2(
 						]))
 				]));
 	});
+var elm$html$Html$a = _VirtualDom_node('a');
 var elm$html$Html$div = _VirtualDom_node('div');
+var elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
+var elm$html$Html$Attributes$target = elm$html$Html$Attributes$stringProperty('target');
 var author$project$Main$view = function (model) {
 	return A2(
 		elm$html$Html$div,
@@ -5786,7 +5810,7 @@ var author$project$Main$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						elm$html$Html$text('はじめ')
+						elm$html$Html$text('しかし 何も 見つからなかった')
 					])),
 				A2(
 				elm$html$Html$div,
@@ -5797,7 +5821,95 @@ var author$project$Main$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						elm$html$Html$text('にばんめ')
+						elm$html$Html$text('なんと バグを 見つけた')
+					])),
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class(model.showWindow.trd),
+						elm$html$Html$Attributes$class('secondWindow nes-container is-rounded is-dark')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$a,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$target('_blank'),
+										elm$html$Html$Attributes$href('https://qsk.netlify.com/')
+									]),
+								_List_fromArray(
+									[
+										elm$html$Html$text('typing')
+									]))
+							]))
+					])),
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class(model.showWindow.fth),
+						elm$html$Html$Attributes$class('secondWindow nes-container is-rounded is-dark')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$a,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$target('_blank'),
+										elm$html$Html$Attributes$href('https://twitter.com/8140i2865_3')
+									]),
+								_List_fromArray(
+									[
+										elm$html$Html$text('twitter')
+									]))
+							])),
+						A2(
+						elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$a,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$target('_blank'),
+										elm$html$Html$Attributes$href('https://github.com/kyu-suke')
+									]),
+								_List_fromArray(
+									[
+										elm$html$Html$text('github')
+									]))
+							])),
+						A2(
+						elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$a,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$target('_blank'),
+										elm$html$Html$Attributes$href('https://homedogheavy.hatenablog.com/')
+									]),
+								_List_fromArray(
+									[
+										elm$html$Html$text('homedogheavy')
+									]))
+							]))
 					]))
 			]));
 };

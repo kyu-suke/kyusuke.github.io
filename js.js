@@ -4310,6 +4310,7 @@ function _Browser_load(url)
 		}
 	}));
 }
+var author$project$Main$showContent = {fst: 'hidden', snd: 'hidden'};
 var elm$core$Basics$False = {$: 'False'};
 var elm$core$Basics$True = {$: 'True'};
 var elm$core$Result$isOk = function (result) {
@@ -4789,7 +4790,19 @@ var elm$core$Platform$Cmd$batch = _Platform_batch;
 var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
 var author$project$Main$init = function (_n0) {
 	return _Utils_Tuple2(
-		{s: 'asdf'},
+		{
+			menus: _List_fromArray(
+				[
+					_Utils_Tuple2('つよさ', 'checked'),
+					_Utils_Tuple2('とくぎ', ''),
+					_Utils_Tuple2('どうぐ', ''),
+					_Utils_Tuple2('いどう', '')
+				]),
+			s: 'asdf',
+			selectedMenu: '',
+			showClass: 'hidden',
+			showWindow: author$project$Main$showContent
+		},
 		elm$core$Platform$Cmd$none);
 };
 var author$project$Main$Change = function (a) {
@@ -5523,19 +5536,165 @@ var author$project$Main$subscriptions = function (model) {
 					A2(elm$json$Json$Decode$field, 'key', elm$json$Json$Decode$string)))
 			]));
 };
+var elm$core$List$head = function (list) {
+	if (list.b) {
+		var x = list.a;
+		var xs = list.b;
+		return elm$core$Maybe$Just(x);
+	} else {
+		return elm$core$Maybe$Nothing;
+	}
+};
+var elm$core$Tuple$second = function (_n0) {
+	var y = _n0.b;
+	return y;
+};
+var author$project$Main$moveChecked = F2(
+	function (list, key) {
+		var lastChecked = function () {
+			var _n3 = elm$core$List$head(
+				elm$core$List$reverse(list));
+			if (_n3.$ === 'Just') {
+				var l = _n3.a;
+				return l.b;
+			} else {
+				return '';
+			}
+		}();
+		if (key === 'end') {
+			if (list.b) {
+				var x = list.a;
+				var xs = list.b;
+				return _Utils_ap(
+					_List_fromArray(
+						[
+							_Utils_Tuple2(x.a, 'checked')
+						]),
+					xs);
+			} else {
+				return _List_Nil;
+			}
+		} else {
+			if (lastChecked === 'checked') {
+				if (list.b) {
+					var x = list.a;
+					var xs = list.b;
+					return _Utils_ap(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(x.a, 'checked')
+							]),
+						A2(
+							elm$core$List$map,
+							function (l) {
+								return _Utils_Tuple2(l.a, '');
+							},
+							xs));
+				} else {
+					return list;
+				}
+			} else {
+				if (list.b) {
+					var x = list.a;
+					var xs = list.b;
+					return (x.b === 'checked') ? _Utils_ap(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(x.a, '')
+							]),
+						A2(author$project$Main$moveChecked, xs, 'end')) : _Utils_ap(
+						_List_fromArray(
+							[
+								_Utils_Tuple2(x.a, '')
+							]),
+						A2(author$project$Main$moveChecked, xs, ''));
+				} else {
+					return _List_Nil;
+				}
+			}
+		}
+	});
+var author$project$Main$showWindow = function (t) {
+	var key = t.a;
+	switch (key) {
+		case 'つよさ':
+			return _Utils_update(
+				author$project$Main$showContent,
+				{fst: ''});
+		case 'とくぎ':
+			return _Utils_update(
+				author$project$Main$showContent,
+				{snd: ''});
+		default:
+			return author$project$Main$showContent;
+	}
+};
+var author$project$Main$upChecked = F2(
+	function (list, key) {
+		return elm$core$List$reverse(
+			A2(
+				author$project$Main$moveChecked,
+				elm$core$List$reverse(list),
+				key));
+	});
+var elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2(elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
 var author$project$Main$update = F2(
 	function (msg, model) {
 		if (msg.$ === 'Change') {
 			var s = msg.a;
-			return (s === 'ArrowUp') ? _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{s: s}),
-				elm$core$Platform$Cmd$none) : ((s === 'ArrowDown') ? _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{s: s}),
-				elm$core$Platform$Cmd$none) : _Utils_Tuple2(model, elm$core$Platform$Cmd$none));
+			if (s === 'ArrowUp') {
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							menus: A2(author$project$Main$upChecked, model.menus, 'up')
+						}),
+					elm$core$Platform$Cmd$none);
+			} else {
+				if (s === 'ArrowDown') {
+					return _Utils_Tuple2(
+						_Utils_update(
+							model,
+							{
+								menus: A2(author$project$Main$moveChecked, model.menus, 'down')
+							}),
+						elm$core$Platform$Cmd$none);
+				} else {
+					if (s === 'Enter') {
+						var _n1 = elm$core$List$head(
+							A2(
+								elm$core$List$filter,
+								function (m) {
+									return m.b === 'checked';
+								},
+								model.menus));
+						if (_n1.$ === 'Just') {
+							var m = _n1.a;
+							return _Utils_Tuple2(
+								_Utils_update(
+									model,
+									{
+										showWindow: author$project$Main$showWindow(m)
+									}),
+								elm$core$Platform$Cmd$none);
+						} else {
+							return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+						}
+					} else {
+						return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
+					}
+				}
+			}
 		} else {
 			return _Utils_Tuple2(model, elm$core$Platform$Cmd$none);
 		}
@@ -5546,14 +5705,15 @@ var elm$html$Html$p = _VirtualDom_node('p');
 var elm$html$Html$span = _VirtualDom_node('span');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
-var elm$virtual_dom$VirtualDom$attribute = F2(
-	function (key, value) {
+var elm$json$Json$Encode$bool = _Json_wrap;
+var elm$html$Html$Attributes$boolProperty = F2(
+	function (key, bool) {
 		return A2(
-			_VirtualDom_attribute,
-			_VirtualDom_noOnOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
+			_VirtualDom_property,
+			key,
+			elm$json$Json$Encode$bool(bool));
 	});
-var elm$html$Html$Attributes$attribute = elm$virtual_dom$VirtualDom$attribute;
+var elm$html$Html$Attributes$checked = elm$html$Html$Attributes$boolProperty('checked');
 var elm$json$Json$Encode$string = _Json_wrap;
 var elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5565,19 +5725,16 @@ var elm$html$Html$Attributes$stringProperty = F2(
 var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
 var elm$html$Html$Attributes$name = elm$html$Html$Attributes$stringProperty('name');
 var elm$html$Html$Attributes$type_ = elm$html$Html$Attributes$stringProperty('type');
+var elm$html$Html$Attributes$value = elm$html$Html$Attributes$stringProperty('value');
 var author$project$Main$checkItem = F2(
-	function (inputName, inputLabel) {
-		var attrs = (inputLabel === 'つよさ') ? _List_fromArray(
+	function (inputName, inputTuple) {
+		var attrs = _List_fromArray(
 			[
-				A2(elm$html$Html$Attributes$attribute, 'checked', ''),
+				elm$html$Html$Attributes$checked(inputTuple.b === 'checked'),
 				elm$html$Html$Attributes$class('nes-radio is-dark'),
 				elm$html$Html$Attributes$name(inputName),
-				elm$html$Html$Attributes$type_('radio')
-			]) : _List_fromArray(
-			[
-				elm$html$Html$Attributes$class('nes-radio is-dark'),
-				elm$html$Html$Attributes$name(inputName),
-				elm$html$Html$Attributes$type_('radio')
+				elm$html$Html$Attributes$type_('radio'),
+				elm$html$Html$Attributes$value(inputTuple.a)
 			]);
 		return A2(
 			elm$html$Html$p,
@@ -5595,13 +5752,11 @@ var author$project$Main$checkItem = F2(
 							_List_Nil,
 							_List_fromArray(
 								[
-									elm$html$Html$text(inputLabel)
+									elm$html$Html$text(inputTuple.a)
 								]))
 						]))
 				]));
 	});
-var author$project$Main$topList = _List_fromArray(
-	['つよさ', 'とくぎ', 'どうぐ', 'いどう']);
 var elm$html$Html$div = _VirtualDom_node('div');
 var author$project$Main$view = function (model) {
 	return A2(
@@ -5621,20 +5776,29 @@ var author$project$Main$view = function (model) {
 				A2(
 					elm$core$List$map,
 					author$project$Main$checkItem('first'),
-					_Utils_ap(
-						author$project$Main$topList,
-						_List_fromArray(
-							[model.s])))),
+					model.menus)),
 				A2(
 				elm$html$Html$div,
 				_List_fromArray(
 					[
-						elm$html$Html$Attributes$class('hidden secondWindow nes-container is-rounded is-dark')
+						elm$html$Html$Attributes$class(model.showWindow.fst),
+						elm$html$Html$Attributes$class('secondWindow nes-container is-rounded is-dark')
 					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text('はじめ')
+					])),
 				A2(
-					elm$core$List$map,
-					author$project$Main$checkItem('second'),
-					author$project$Main$topList))
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class(model.showWindow.snd),
+						elm$html$Html$Attributes$class('secondWindow nes-container is-rounded is-dark')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text('にばんめ')
+					]))
 			]));
 };
 var elm$browser$Browser$element = _Browser_element;

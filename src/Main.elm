@@ -28,14 +28,36 @@ main =
 
 
 type alias Model =
-    { s : String }
+    { s : String
+    , menus : List ( String, String )
+    , selectedMenu : String
+    , showClass : String
+    , showWindow : ShowWindow
+    }
+
+
+type alias ShowWindow =
+    { fst : String
+    , snd : String
+    }
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( { s = "asdf" }
+    ( { s = "asdf"
+      , menus = [ ( "つよさ", "checked" ), ( "とくぎ", "" ), ( "どうぐ", "" ), ( "いどう", "" ) ]
+      , selectedMenu = ""
+      , showClass = "hidden"
+      , showWindow = showContent
+      }
     , Cmd.none
     )
+
+
+showContent =
+    { fst = "hidden"
+    , snd = "hidden"
+    }
 
 
 
@@ -52,13 +74,21 @@ update msg model =
     case msg of
         Change s ->
             if s == "ArrowUp" then
-                ( { model | s = s }, Cmd.none )
+                ( { model | menus = upChecked model.menus "up" }, Cmd.none )
 
             else if s == "ArrowDown" then
-                ( { model | s = s }, Cmd.none )
+                ( { model | menus = moveChecked model.menus "down" }, Cmd.none )
+
+            else if s == "Enter" then
+                case List.head <| List.filter (\m -> Tuple.second m == "checked") model.menus of
+                    Just m ->
+                        ( { model | showWindow = showWindow m }, Cmd.none )
+
+                    _ ->
+                        ( model, Cmd.none )
 
             else
-                update (ChangeKey "") model
+                ( model, Cmd.none )
 
         -- ( model, Cmd.none )
         None ->
@@ -72,32 +102,24 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") (topList ++ [ model.s ]))
-        , div [ class "hidden secondWindow nes-container is-rounded is-dark" ] (List.map (checkItem "second") topList)
+        [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") model.menus)
+        , div [ class model.showWindow.fst, class "secondWindow nes-container is-rounded is-dark" ] [ text "はじめ" ]
+        , div [ class model.showWindow.snd, class "secondWindow nes-container is-rounded is-dark" ] [ text "にばんめ" ]
         ]
 
 
-topList : List String
-topList =
-    [ "つよさ", "とくぎ", "どうぐ", "いどう" ]
-
-
-checkItem : String -> String -> Html Msg
-checkItem inputName inputLabel =
+checkItem : String -> ( String, String ) -> Html Msg
+checkItem inputName inputTuple =
     let
         attrs =
-            if inputLabel == "つよさ" then
-                [ attribute "checked" "", class "nes-radio is-dark", name inputName, type_ "radio" ]
-
-            else
-                [ class "nes-radio is-dark", name inputName, type_ "radio" ]
+            [ checked (Tuple.second inputTuple == "checked"), class "nes-radio is-dark", name inputName, type_ "radio", value (Tuple.first inputTuple) ]
     in
     p []
         [ label []
             [ input attrs
                 []
             , span []
-                [ text inputLabel ]
+                [ text <| Tuple.first inputTuple ]
             ]
         ]
 
@@ -112,14 +134,63 @@ subscriptions model =
         [ onKeyDown (Decode.map Change (Decode.field "key" Decode.string))
         ]
 
-moveChecked : List (String, String) -> String -> List (String, String)
+
+moveChecked : List ( String, String ) -> String -> List ( String, String )
 moveChecked list key =
-    case list of
-        x :: xs ->
-            if Tuple.second x == "checked" then
-                [(Tuple.first x, "")] ++ [次のやつtail head] ++ [tail]
-                case result of
-                    Just hoge -> model
-                    _ -> list
-            else
-                moveChecked hoge hoge
+    let
+        lastChecked =
+            case List.head <| List.reverse list of
+                Just l ->
+                    Tuple.second l
+
+                _ ->
+                    ""
+    in
+    if key == "end" then
+        case list of
+            x :: xs ->
+                [ ( Tuple.first x, "checked" ) ] ++ xs
+
+            _ ->
+                []
+
+    else if lastChecked == "checked" then
+        case list of
+            x :: xs ->
+                [ ( Tuple.first x, "checked" ) ] ++ List.map (\l -> ( Tuple.first l, "" )) xs
+
+            _ ->
+                list
+
+    else
+        case list of
+            x :: xs ->
+                if Tuple.second x == "checked" then
+                    [ ( Tuple.first x, "" ) ] ++ moveChecked xs "end"
+
+                else
+                    [ ( Tuple.first x, "" ) ] ++ moveChecked xs ""
+
+            _ ->
+                []
+
+
+upChecked list key =
+    List.reverse <| moveChecked (List.reverse list) key
+
+
+showWindow : ( String, String ) -> ShowWindow
+showWindow t =
+    let
+        key =
+            Tuple.first t
+    in
+    case key of
+        "つよさ" ->
+            { showContent | fst = "" }
+
+        "とくぎ" ->
+            { showContent | snd = "" }
+
+        _ ->
+            showContent

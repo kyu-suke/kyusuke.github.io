@@ -5909,6 +5909,23 @@ var author$project$Main$view = function (model) {
 									[
 										elm$html$Html$text('homedogheavy')
 									]))
+							])),
+						A2(
+						elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								elm$html$Html$a,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$target('_blank'),
+										elm$html$Html$Attributes$href('https://homedogheavy.hatenablog.com/')
+									]),
+								_List_fromArray(
+									[
+										elm$html$Html$text('mail')
+									]))
 							]))
 					]))
 			]));

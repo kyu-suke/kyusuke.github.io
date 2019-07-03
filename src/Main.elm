@@ -119,6 +119,7 @@ view model =
             [ p [] [ a [ target "_blank", href "https://twitter.com/8140i2865_3" ] [ text "twitter" ] ]
             , p [] [ a [ target "_blank", href "https://github.com/kyu-suke" ] [ text "github" ] ]
             , p [] [ a [ target "_blank", href "https://homedogheavy.hatenablog.com/" ] [ text "homedogheavy" ] ]
+            , p [] [ a [ target "_blank", href "https://homedogheavy.hatenablog.com/" ] [ text "mail" ] ]
             ]
         ]
 

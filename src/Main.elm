@@ -113,7 +113,7 @@ view model =
         , div [ class model.showWindow.fst, class "secondWindow nes-container is-rounded is-dark" ] [ text "しかし 何も 見つからなかった" ]
         , div [ class model.showWindow.snd, class "secondWindow nes-container is-rounded is-dark" ] [ text "なんと バグを 見つけた" ]
         , div [ class model.showWindow.trd, class "secondWindow nes-container is-rounded is-dark" ]
-            [ p [] [ a [ target "_blank", href "https://qsk.netlify.com/" ] [ text "typing" ] ]
+            [ p [] [ a [ target "_blank", href "https://typingame.netlify.com/" ] [ text "typing" ] ]
             ]
         , div [ class model.showWindow.fth, class "secondWindow nes-container is-rounded is-dark" ]
             [ p [] [ a [ target "_blank", href "https://twitter.com/8140i2865_3" ] [ text "twitter" ] ]

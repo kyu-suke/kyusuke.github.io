@@ -5842,7 +5842,7 @@ var author$project$Main$view = function (model) {
 								_List_fromArray(
 									[
 										elm$html$Html$Attributes$target('_blank'),
-										elm$html$Html$Attributes$href('https://qsk.netlify.com/')
+										elm$html$Html$Attributes$href('https://typingame.netlify.com/')
 									]),
 								_List_fromArray(
 									[

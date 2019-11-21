@@ -1,16 +1,13 @@
-<?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
-<channel>
-<title>switchsoulmonarch</title>
-<item>
-<title>1.0</title>
-<pubDate>日, 06 1月 2019 03:50:06 +0900</pubDate>
-<sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.0.1/switchsoulmonarch.zip" sparkle:version="1.0.1" sparkle:shortVersionString="1.0.1" sparkle:edSignature="X/TP2dK8RUDTUHcMVb7jxYqZGbDncIQbj1fQjeEJqTxPE2ntaTRTjHGmbVyX6wD3v3CORilkvlN9klKz6TXEDQ==" length="5303559" type="application/octet-stream"/>
-</item>
-<item>
-<title>1.0.1</title>
-<pubDate>水, 06 11月 2019 23:36:45 +0900</pubDate>
-<sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.0.2/switchsoulmonarch.zip" sparkle:version="1.0.2" sparkle:shortVersionString="1.0.2" length="5211130" type="application/octet-stream" sparkle:edSignature="QwGUTbuuUTj3HcsaTQCBESs3pTiqA3J6VPX831KhYXm/2fG+WJFud3lklZ4Mff/fx7L07h/8/ALCkmPOFadgAQ==" length="5211130"/>
-</item>
-</channel></rss>
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>switchsoulmonarch</title>
+        <item>
+            <title>1.0.1</title>
+            <pubDate>木, 21 11月 2019 20:29:37 +0900</pubDate>
+            <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.1.0/switchsoulmonarch.zip" sparkle:version="1.0.1" sparkle:shortVersionString="1.0.1" length="9374800" type="application/octet-stream" sparkle:edSignature="j48Ipkf6d7YUlP79l/fMAdRVuEbKts3yvFyYx2lhuNtBD9NX+eG5fEcqr+BeCef3Qwix4c5SD33okkWuX0ZFCA==" length="9374800"/>
+        </item>
+    </channel>
+</rss>
+

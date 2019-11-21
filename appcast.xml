@@ -6,7 +6,7 @@
             <title>1.0.1</title>
             <pubDate>木, 21 11月 2019 20:29:37 +0900</pubDate>
             <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.1.0/switchsoulmonarch.zip" sparkle:version="1.0.1" sparkle:shortVersionString="1.0.1" length="9374800" type="application/octet-stream" sparkle:edSignature="j48Ipkf6d7YUlP79l/fMAdRVuEbKts3yvFyYx2lhuNtBD9NX+eG5fEcqr+BeCef3Qwix4c5SD33okkWuX0ZFCA==" length="9374800"/>
+            <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/1.1.0/switchsoulmonarch.zip" sparkle:version="1.0.1" sparkle:shortVersionString="1.0.1" type="application/octet-stream" sparkle:edSignature="j48Ipkf6d7YUlP79l/fMAdRVuEbKts3yvFyYx2lhuNtBD9NX+eG5fEcqr+BeCef3Qwix4c5SD33okkWuX0ZFCA==" length="9374800"/>
         </item>
     </channel>
 </rss>

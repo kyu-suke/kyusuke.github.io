@@ -8,7 +8,7 @@
             <sparkle:version>2.1.1</sparkle:version>
             <sparkle:shortVersionString>2.1.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
-            <enclosure url="https://kyu-suke.github.io/switchsoulmonarch.zip" length="15723617" type="application/octet-stream" sparkle:edSignature="/V5H4N+O5V9IQXP93hj9gcD+oQKkQ54HBh0WKMV6Gkbk7BMwi18DYehTj8yusBbbCXqrIXsNXsG4RkOBszlHBg=="/>
+            <enclosure url="https://github.com/kyu-suke/switchsoulmonarch/releases/download/2.1.1/switchsoulmonarch.zip" length="15723617" type="application/octet-stream" sparkle:edSignature="/V5H4N+O5V9IQXP93hj9gcD+oQKkQ54HBh0WKMV6Gkbk7BMwi18DYehTj8yusBbbCXqrIXsNXsG4RkOBszlHBg=="/>
         </item>
     </channel>
 </rss>

@@ -2,32 +2,34 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>qsk</title>
-  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
-  <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
-  <link href="css.css" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/icon.ico">
+  <title>kyusuke/apmewj</title>
+  <script src="pages/1/js.js"></script>
+  <script src="pages/1/init.js"></script>
+  <script>
+    function hoge() {
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", "pages/1/index.html", true);
+        rawFile.onreadystatechange = function() {
+            if (rawFile.readyState === 4) {
+                var allText = rawFile.responseText;
+                document.getElementById("main").innerHTML = allText;
 
+                let scc = document.createElement("script")
+                scc.setAttribute("src", "pages/1/init.js");
+                document.body.append(scc)
+            }
+        }
+        rawFile.send();
+    }
 
-  <script src="js.js"></script>
-  <style>
-  @font-face {
-    font-family: "MyFont";
-    src: url(/PixelMplus10-Bold.ttf);
-  }
-  html, body, pre, code, kbd, samp {
-    font-family: "MyFont", "Press Start 2P";
-  }
-  </style>
+  </script>
 </head>
 
-<body>
-  <div id="elm"></div>
-  <script>
-  var app = Elm.Main.init({
-    node: document.getElementById('elm')
-  });
-  </script>
+<body onload="hoge()">
+  <div id="main"></div>
 </body>
 </html>
+
 
 

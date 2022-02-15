@@ -1,17 +1,35 @@
 body {
 	background: #212529;
 	color: #fff;
+	height: 100%;
+}
+
+#main {
+	height: 100%;
 }
 
 .container {
-	width: 200px;
-	margin: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.nes-container.is-rounded.is-dark {
+	border-image-repeat: inherit;
 }
 
 .nes-container.is-dark.secondWindow {
 	position: absolute;
 	top: 100px;
 	left: 85px;
+}
+
+.container .nes-container div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin: 0 10px;
 }
 
 .hidden {

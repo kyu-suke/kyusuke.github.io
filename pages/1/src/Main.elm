@@ -47,7 +47,8 @@ type alias ShowWindow =
 init : () -> ( Model, Cmd Msg )
 init _ =
     ( { s = "asdf"
-      , menus = [ ( "つよさ", "checked" ), ( "とくぎ", "" ), ( "どうぐ", "" ), ( "いどう", "" ) ]
+      -- , menus = [ ( "つよさ", "checked" ), ( "とくぎ", "" ), ( "どうぐ", "" ), ( "いどう", "" ) ]
+      , menus = [ ( "profile", "checked" ), ( "github", "" ), ( "twitter", "" ), ( "blog", "" ) ]
       , selectedMenu = ""
       , showClass = "hidden"
       , showWindow = showContent
@@ -105,23 +106,32 @@ update msg model =
 
 -- VIEW
 
-
 view : Model -> Html Msg
 view model =
     div [ class "container" ]
-        [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") model.menus)
-        , div [ class model.showWindow.fst, class "secondWindow nes-container is-rounded is-dark" ] [ text "しかし 何も 見つからなかった" ]
-        , div [ class model.showWindow.snd, class "secondWindow nes-container is-rounded is-dark" ] [ text "なんと バグを 見つけた" ]
-        , div [ class model.showWindow.trd, class "secondWindow nes-container is-rounded is-dark" ]
-            [ p [] [ a [ target "_blank", href "https://typingame.netlify.com/" ] [ text "typing" ] ]
-            ]
-        , div [ class model.showWindow.fth, class "secondWindow nes-container is-rounded is-dark" ]
-            [ p [] [ a [ target "_blank", href "https://twitter.com/8140i2865_3" ] [ text "twitter" ] ]
-            , p [] [ a [ target "_blank", href "https://github.com/kyu-suke" ] [ text "github" ] ]
-            , p [] [ a [ target "_blank", href "https://homedogheavy.hatenablog.com/" ] [ text "homedogheavy" ] ]
-            , p [] [ a [ target "_blank", href "https://homedogheavy.hatenablog.com/" ] [ text "mail" ] ]
-            ]
+        [ div [ class "firstWindow nes-container is-rounded is-dark" ] [ div [] [ 
+             div [] [a [href "https://kyu-suke.github.io/"] [img [class "nes-avatar is-rounded is-large", src "pages/1/g.png"] [] ] ]
+            ,div [] [a [href "https://twitter.com/8140i2865_3", target "_blank"] [i [class "nes-icon twitter is-large"] []] ]
+            ,div [] [a [href "https://github.com/kyu-suke", target "_blank"] [i [class "nes-icon github is-large"] []] ]
+            ,div [] [a [href "https://homedogheavy.hatenablog.com/", target "_blank"] [img [class "nes-avatar is-rounded is-large", src "pages/1/bl.png"] [] ] ]
+            -- ,div [] [i [class "nes-icon twitter is-large"] [] ]
+            ]]
         ]
+-- view model =
+--     div [ class "container" ]
+--         [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") model.menus)
+--         , div [ class model.showWindow.fst, class "secondWindow nes-container is-rounded is-dark" ] [ text "しかし 何も 見つからなかった" ]
+--         , div [ class model.showWindow.snd, class "secondWindow nes-container is-rounded is-dark" ] [ text "なんと バグを 見つけた" ]
+--         , div [ class model.showWindow.trd, class "secondWindow nes-container is-rounded is-dark" ]
+--             [ p [] [ a [ target "_blank", href "https://typingame.netlify.com/" ] [ text "typing" ] ]
+--             ]
+--         , div [ class model.showWindow.fth, class "secondWindow nes-container is-rounded is-dark" ]
+--             [ p [] [ a [ target "_blank", href "https://twitter.com/8140i2865_3" ] [ text "twitter" ] ]
+--             , p [] [ a [ target "_blank", href "https://github.com/kyu-suke" ] [ text "github" ] ]
+--             , p [] [ a [ target "_blank", href "https://homedogheavy.hatenablog.com/" ] [ text "homedogheavy" ] ]
+--             , p [] [ a [ target "_blank", href "https://homedogheavy.hatenablog.com/" ] [ text "mail" ] ]
+--             ]
+--         ]
 
 
 checkItem : String -> ( String, String ) -> Html Msg

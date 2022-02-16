@@ -35,3 +35,10 @@ body {
 .hidden {
 	display: none;
 }
+
+.message-list.baloon {
+    position: absolute;
+    z-index: 999;
+    bottom: 105px;
+    left: 55px;
+}

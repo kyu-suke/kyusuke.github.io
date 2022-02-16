@@ -4,29 +4,51 @@
   <meta charset="UTF-8">
   <link rel="shortcut icon" href="assets/icon.ico">
   <title>kyusuke/apmewj</title>
-  <script src="pages/1/js.js"></script>
-  <script src="pages/1/init.js"></script>
   <script>
-    function hoge() {
+    const pages = {
+        1: {
+            html: "pages/1/index.html",
+            pre: ["pages/1/js.js"],
+            aft: ["pages/1/init.js"],
+        },
+        2: {
+            html: "pages/2/index.html",
+            pre: ["https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"],
+            aft: ["pages/2/js.js"],
+        }
+    }
+    function render(key) {
         var rawFile = new XMLHttpRequest();
-        rawFile.open("GET", "pages/1/index.html", true);
+        rawFile.open("GET", pages[key].html, true);
         rawFile.onreadystatechange = function() {
             if (rawFile.readyState === 4) {
                 var allText = rawFile.responseText;
                 document.getElementById("main").innerHTML = allText;
-
-                let scc = document.createElement("script")
-                scc.setAttribute("src", "pages/1/init.js");
-                document.body.append(scc)
+                for (src of pages[key].pre) {
+                    let sc = document.createElement("script")
+                    sc.setAttribute("src", src);
+                    document.body.append(sc)
+                }
+                setTimeout(function() {
+                    for (src of pages[key].aft) {
+                        let sc = document.createElement("script")
+                        sc.setAttribute("src", src);
+                        document.body.append(sc)
+                    }
+                } , 100)
             }
         }
         rawFile.send();
     }
-
+    window.onload = function() {
+      const keys = [1, 2]
+      const k = keys[Math.floor(Math.random()*keys.length)];
+      render(k)
+    };
   </script>
 </head>
 
-<body onload="hoge()">
+<body>
   <div id="main"></div>
 </body>
 </html>

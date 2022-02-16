@@ -11,6 +11,8 @@ import Json.Encode
 import Random exposing (..)
 import Time exposing (..)
 import Url exposing (..)
+import Debug
+
 
 
 main : Program () Model Msg
@@ -33,6 +35,7 @@ type alias Model =
     , selectedMenu : String
     , showClass : String
     , showWindow : ShowWindow
+    , baloonClass : String
     }
 
 
@@ -52,6 +55,7 @@ init _ =
       , selectedMenu = ""
       , showClass = "hidden"
       , showWindow = showContent
+      , baloonClass = "hidden"
       }
     , Cmd.none
     )
@@ -72,6 +76,7 @@ showContent =
 type Msg
     = Change String
     | None
+    | Hello
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -99,6 +104,11 @@ update msg model =
                 ( model, Cmd.none )
 
         -- ( model, Cmd.none )
+        Hello ->
+            if model.baloonClass == "hidden" then
+               ( { model | baloonClass = "" }, Cmd.none )
+            else
+               ( { model | baloonClass = "hidden" }, Cmd.none )
         None ->
             ( model, Cmd.none )
 
@@ -108,15 +118,26 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div [ class "container" ]
-        [ div [ class "firstWindow nes-container is-rounded is-dark" ] [ div [] [ 
-             div [] [a [href "https://kyu-suke.github.io/"] [img [class "nes-avatar is-rounded is-large", src "pages/1/g.png"] [] ] ]
-            ,div [] [a [href "https://twitter.com/8140i2865_3", target "_blank"] [i [class "nes-icon twitter is-large"] []] ]
-            ,div [] [a [href "https://github.com/kyu-suke", target "_blank"] [i [class "nes-icon github is-large"] []] ]
-            ,div [] [a [href "https://homedogheavy.hatenablog.com/", target "_blank"] [img [class "nes-avatar is-rounded is-large", src "pages/1/bl.png"] [] ] ]
-            -- ,div [] [i [class "nes-icon twitter is-large"] [] ]
-            ]]
-        ]
+    div [ class "container" ] [
+        div [ class "firstWindow nes-container is-rounded is-dark" ] [ 
+            div [] [
+               div [] [a [onClick Hello] [
+                  section [class model.baloonClass, class "message-list baloon"] [
+                    section [class "message -left"] [
+                        div [class "nes-balloon from-left is-dark"] [
+                         p [] [text "Hi, I'm kysuke/apmewj."]
+                        ]
+                    ]
+                  ]
+                 ,img [class "nes-avatar is-rounded is-large", src "pages/1/g.png"] [] 
+                 ] ]
+              ,div [] [a [href "https://twitter.com/8140i2865_3", target "_blank"] [i [class "nes-icon twitter is-large"] []] ]
+              ,div [] [a [href "https://github.com/kyu-suke", target "_blank"] [i [class "nes-icon github is-large"] []] ]
+              ,div [] [a [href "https://homedogheavy.hatenablog.com/", target "_blank"] [img [class "nes-avatar is-rounded is-large", src "pages/1/bl.png"] [] ] ]
+              -- ,div [] [i [class "nes-icon twitter is-large"] [] ]
+            ]
+          ]
+    ]
 -- view model =
 --     div [ class "container" ]
 --         [ div [ class "firstWindow nes-container is-rounded is-dark" ] (List.map (checkItem "first") model.menus)

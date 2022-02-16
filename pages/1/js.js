@@ -5105,6 +5105,7 @@ var $author$project$Main$showContent = {fst: 'hidden', fth: 'hidden', snd: 'hidd
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
 		{
+			baloonClass: 'hidden',
 			menus: _List_fromArray(
 				[
 					_Utils_Tuple2('profile', 'checked'),
@@ -5659,63 +5660,75 @@ var $author$project$Main$upChecked = F2(
 	});
 var $author$project$Main$update = F2(
 	function (msg, model) {
-		if (msg.$ === 'Change') {
-			var s = msg.a;
-			if (s === 'ArrowUp') {
-				return _Utils_Tuple2(
-					_Utils_update(
-						model,
-						{
-							menus: A2($author$project$Main$upChecked, model.menus, 'up')
-						}),
-					$elm$core$Platform$Cmd$none);
-			} else {
-				if (s === 'ArrowDown') {
+		switch (msg.$) {
+			case 'Change':
+				var s = msg.a;
+				if (s === 'ArrowUp') {
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
 							{
-								menus: A2($author$project$Main$moveChecked, model.menus, 'down')
+								menus: A2($author$project$Main$upChecked, model.menus, 'up')
 							}),
 						$elm$core$Platform$Cmd$none);
 				} else {
-					if (s === 'Enter') {
-						var _v1 = $elm$core$List$head(
-							A2(
-								$elm$core$List$filter,
-								function (m) {
-									return m.b === 'checked';
-								},
-								model.menus));
-						if (_v1.$ === 'Just') {
-							var m = _v1.a;
-							return _Utils_Tuple2(
-								_Utils_update(
-									model,
-									{
-										showWindow: $author$project$Main$showWindow(m)
-									}),
-								$elm$core$Platform$Cmd$none);
-						} else {
-							return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
-						}
+					if (s === 'ArrowDown') {
+						return _Utils_Tuple2(
+							_Utils_update(
+								model,
+								{
+									menus: A2($author$project$Main$moveChecked, model.menus, 'down')
+								}),
+							$elm$core$Platform$Cmd$none);
 					} else {
-						if (s === 'Backspace') {
-							return _Utils_Tuple2(
-								_Utils_update(
-									model,
-									{showWindow: $author$project$Main$showContent}),
-								$elm$core$Platform$Cmd$none);
+						if (s === 'Enter') {
+							var _v1 = $elm$core$List$head(
+								A2(
+									$elm$core$List$filter,
+									function (m) {
+										return m.b === 'checked';
+									},
+									model.menus));
+							if (_v1.$ === 'Just') {
+								var m = _v1.a;
+								return _Utils_Tuple2(
+									_Utils_update(
+										model,
+										{
+											showWindow: $author$project$Main$showWindow(m)
+										}),
+									$elm$core$Platform$Cmd$none);
+							} else {
+								return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+							}
 						} else {
-							return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+							if (s === 'Backspace') {
+								return _Utils_Tuple2(
+									_Utils_update(
+										model,
+										{showWindow: $author$project$Main$showContent}),
+									$elm$core$Platform$Cmd$none);
+							} else {
+								return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+							}
 						}
 					}
 				}
-			}
-		} else {
-			return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
+			case 'Hello':
+				return (model.baloonClass === 'hidden') ? _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{baloonClass: ''}),
+					$elm$core$Platform$Cmd$none) : _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{baloonClass: 'hidden'}),
+					$elm$core$Platform$Cmd$none);
+			default:
+				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 		}
 	});
+var $author$project$Main$Hello = {$: 'Hello'};
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
@@ -5735,6 +5748,25 @@ var $elm$html$Html$Attributes$href = function (url) {
 };
 var $elm$html$Html$i = _VirtualDom_node('i');
 var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 'Normal', a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'click',
+		$elm$json$Json$Decode$succeed(msg));
+};
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$html$Html$section = _VirtualDom_node('section');
 var $elm$html$Html$Attributes$src = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
@@ -5742,6 +5774,8 @@ var $elm$html$Html$Attributes$src = function (url) {
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
 var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Main$view = function (model) {
 	return A2(
 		$elm$html$Html$div,
@@ -5773,10 +5807,45 @@ var $author$project$Main$view = function (model) {
 										$elm$html$Html$a,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$href('https://kyu-suke.github.io/')
+												$elm$html$Html$Events$onClick($author$project$Main$Hello)
 											]),
 										_List_fromArray(
 											[
+												A2(
+												$elm$html$Html$section,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class(model.baloonClass),
+														$elm$html$Html$Attributes$class('message-list baloon')
+													]),
+												_List_fromArray(
+													[
+														A2(
+														$elm$html$Html$section,
+														_List_fromArray(
+															[
+																$elm$html$Html$Attributes$class('message -left')
+															]),
+														_List_fromArray(
+															[
+																A2(
+																$elm$html$Html$div,
+																_List_fromArray(
+																	[
+																		$elm$html$Html$Attributes$class('nes-balloon from-left is-dark')
+																	]),
+																_List_fromArray(
+																	[
+																		A2(
+																		$elm$html$Html$p,
+																		_List_Nil,
+																		_List_fromArray(
+																			[
+																				$elm$html$Html$text('Hi, I\'m kysuke/apmewj.')
+																			]))
+																	]))
+															]))
+													])),
 												A2(
 												$elm$html$Html$img,
 												_List_fromArray(

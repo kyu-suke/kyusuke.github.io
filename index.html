@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="assets/icon.ico">
+  <link rel="shortcut icon" href="bases/icon.ico">
   <title>kyusuke/apmewj</title>
   <script>
     const pages = {
@@ -15,6 +15,11 @@
             html: "pages/2/index.html",
             pre: ["https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"],
             aft: ["pages/2/js.js"],
+        },
+        3: {
+            html: "pages/3/build/web/index.html",
+            pre: ["pages/3/build/web/main.dart.js"],
+            aft: [],
         }
     }
     function render(key) {
@@ -41,7 +46,8 @@
         rawFile.send();
     }
     window.onload = function() {
-      const keys = [1, 2]
+      // const keys = [1, 2, 3]
+      const keys = [3]
       const k = keys[Math.floor(Math.random()*keys.length)];
       render(k)
     };

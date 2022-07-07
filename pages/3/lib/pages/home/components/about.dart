@@ -47,7 +47,7 @@ class _AboutSectionState extends State<AboutSection> {
                         height: 15.0,
                       ),
                       Text(
-                        "About Me",
+                        "whoami",
                         style: GoogleFonts.josefinSans(
                           fontWeight: FontWeight.w900,
                           height: 1.3,
@@ -58,7 +58,7 @@ class _AboutSectionState extends State<AboutSection> {
                         height: 25.0,
                       ),
                       Text(
-                        "I'm Agnel Selvan, A Flutter and iOS Developer and Technical Blog Writer",
+                        "I'm kyusuke/apmewj, Hi 👋",
                         style: GoogleFonts.josefinSans(
                           fontWeight: FontWeight.bold,
                           height: 1.3,
@@ -69,7 +69,7 @@ class _AboutSectionState extends State<AboutSection> {
                         height: 10.0,
                       ),
                       const Text(
-                        "I have done my Computer Science graduation at Xavier's Institute of Engineering on 2021. I have been developing Mobile Apps for more than 1 years now. I have worked as a Team and as an Indivual in various organization and launched the apps in Playstore as well as in Appstore. In my free time I use to write Technical Blog in Medium. Always love to learn new technologies and to succeed in an environment of growth and excellence and earn a job which provides me job satisfaction and self-development and help me achieve personal as well as organisational goals.",
+                        "I like to make things, so I have made and touched many things, but I have never been able to finish them. I am never free from the wheel of suffering of making prototypes forever. I have been living my life with a shallow and broad knowledge. Technically, I have experienced mainly web-related front and server side. I also touch infrastructure if necessary, but I don't have a deep knowledge of it. Recently, I'm interested in Flutter, so I've been creating mobile apps and web pages with Flutter. This page is also written in Flutter (though it is made by 100% copy and paste). I feel happy and rewarded when I can make someone a little happy with what I have created.",
                         style: TextStyle(
                           color: kCaptionColor,
                           height: 1.5,

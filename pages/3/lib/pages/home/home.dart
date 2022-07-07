@@ -84,7 +84,7 @@ class _HomeState extends ConsumerState<Home>
                       height: 5,
                     ),
                     Text(
-                      "Here are some of my Previous Work :)",
+                      "Happy products ^^",
                       style: GoogleFonts.josefinSans(
                         color: Colors.grey[400],
                         fontSize: 14,
@@ -96,7 +96,7 @@ class _HomeState extends ConsumerState<Home>
                   ],
                 )),
                 ProjectSection(
-                  projects: ProjectModel.projects,
+                  projects: []//ProjectModel.projects,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 28.0),

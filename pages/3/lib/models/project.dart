@@ -34,9 +34,9 @@ class ProjectModel {
       techUsed: [
         TechnologyConstants.flutter,
         TechnologyConstants.firebase,
-        TechnologyConstants.flask,
-        TechnologyConstants.python,
-        TechnologyConstants.razorPay
+        // TechnologyConstants.flask,
+        // TechnologyConstants.python,
+        // TechnologyConstants.razorPay
       ],
       buttonText: "Github Link",
     ),
@@ -83,7 +83,7 @@ class ProjectModel {
       projectLink: "https://github.com/AgnelSelvan/computer-store.git",
       techUsed: [
         TechnologyConstants.php,
-        TechnologyConstants.razorPay,
+        // TechnologyConstants.razorPay,
       ],
     ),
     ProjectModel(
@@ -94,7 +94,7 @@ class ProjectModel {
       appPhotos: AppConstants.personalFaceImage,
       projectLink: "https://github.com/AgnelSelvan/Emotion-Recognition.git",
       techUsed: [
-        TechnologyConstants.python,
+        // TechnologyConstants.python,
       ],
     ),
   ];

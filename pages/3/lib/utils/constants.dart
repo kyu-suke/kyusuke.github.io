@@ -17,8 +17,9 @@ class AppConstants {
   static const linkedInUrl =
       "https://www.linkedin.com/in/agnel-selvan-328421192/";
   static const instagramUrl = "https://www.instagram.com/_agnel.selvan_/";
-  static const githubUrl = "https://github.com/AgnelSelvan";
-  static const mediumUrl = "https://medium.com/@agnelselvan";
+  static const githubUrl = "https://github.com/kyu-suke";
+  static const mediumUrl = "https://homedogheavy.hatenablog.com/";
+  static const twitterUrl = "https://twitter.com/8140i2865_3";
 
   static const _assets = "assets/";
   static const _outputs = "outputs/";
@@ -31,22 +32,25 @@ class AppConstants {
 
   static const _socialImages = _images + "social/";
   static const emailImage = _socialImages + "email.png";
-  static const linkedInImage = _socialImages + "linkedin-logo.png";
+  // static const linkedInImage = _socialImages + "linkedin-logo.png";
+  static const twitterImage = _socialImages + "twitter_black_white.png";
   static const instaImage = _socialImages + "instagram.png";
   static const githubImage = _socialImages + "github.png";
   static const mediumImage = _socialImages + "medium.png";
+  static const blogImage = _socialImages + "hateblog.png";
 
   static const _techImages = _images + "technology/";
   static const flutterImage = _techImages + "flutter.png";
-  static const pythonImage = _techImages + "python.png";
+  // static const pythonImage = _techImages + "python.png";
   static const phpImage = _techImages + "php.png";
   static const flaskImage = _techImages + "flask.png";
   static const firebaseImage = _techImages + "firebase.png";
-  static const razorPayImage = _techImages + "razorpay.png";
-  static const cPlusImage = _techImages + "c++.png";
+  // static const razorPayImage = _techImages + "razorpay.png";
+  // static const cPlusImage = _techImages + "c++.png";
   static const swiftImage = _techImages + "swift.png";
   static const sceneKitImage = _techImages + "scenekit.jpeg";
   static const javascriptImage = _techImages + "javascript.png";
+  static const golangImage = _techImages + "golang.png";
 
   static const _projectsImages = _images + "projects/";
   static const smartStoreImage = _projectsImages + "1.jpeg";
@@ -60,20 +64,15 @@ class AppConstants {
   static const portfolioGif = _gifs + "mobile.gif";
 
   static List<NameOnTap> socialLoginDatas = [
+    // NameOnTap(
+    //     title: emailImage,
+    //     onTap: () {
+    //       Utilty.openMail();
+    //     }),
     NameOnTap(
-        title: emailImage,
+        title: twitterImage,
         onTap: () {
-          Utilty.openMail();
-        }),
-    NameOnTap(
-        title: linkedInImage,
-        onTap: () {
-          Utilty.openUrl(linkedInUrl);
-        }),
-    NameOnTap(
-        title: instaImage,
-        onTap: () {
-          Utilty.openUrl(instagramUrl);
+          Utilty.openUrl(twitterUrl);
         }),
     NameOnTap(
         title: githubImage,
@@ -81,7 +80,7 @@ class AppConstants {
           Utilty.openUrl(githubUrl);
         }),
     NameOnTap(
-        title: mediumImage,
+        title: blogImage,
         onTap: () {
           Utilty.openUrl(mediumUrl);
         }),

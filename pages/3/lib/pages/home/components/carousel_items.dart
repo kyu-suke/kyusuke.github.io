@@ -21,7 +21,7 @@ List<CarouselItemModel> carouselItems(double carouselContainerHeight) =>
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "Mobile Application Developer",
+                      "Prototype Developer",
                       style: GoogleFonts.josefinSans(
                         color: kPrimaryColor,
                         fontWeight: FontWeight.w900,
@@ -33,7 +33,7 @@ List<CarouselItemModel> carouselItems(double carouselContainerHeight) =>
                       height: 18.0,
                     ),
                     Text(
-                      "Agnel Selvan".toUpperCase(),
+                      "kyusuke/apmewj".toUpperCase(),
                       style: GoogleFonts.josefinSans(
                         fontSize: 40.0,
                         fontWeight: FontWeight.w900,
@@ -47,7 +47,7 @@ List<CarouselItemModel> carouselItems(double carouselContainerHeight) =>
                     Row(
                       children: const [
                         Text(
-                          "Software Engineer, ",
+                          "",
                           style: TextStyle(
                             color: kCaptionColor,
                             fontSize: 15.0,
@@ -66,7 +66,7 @@ List<CarouselItemModel> carouselItems(double carouselContainerHeight) =>
                           width: 2,
                         ),
                         Text(
-                          "Mumbai",
+                          "Lazy Lake",
                           style: TextStyle(
                             color: kCaptionColor,
                             fontSize: 15.0,
@@ -75,40 +75,40 @@ List<CarouselItemModel> carouselItems(double carouselContainerHeight) =>
                         )
                       ],
                     ),
-                    const SizedBox(
-                      height: 25.0,
-                    ),
-                    MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: kPrimaryColor,
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        height: 48.0,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 28.0,
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            Utilty.openUrl(AppConstants.linkedInUrl);
-                          },
-                          child: Text(
-                            "Let's Talk",
-                            style: TextStyle(
-                              color: Colors.grey[800],
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    // const SizedBox(
+                    //   height: 25.0,
+                    // ),
+                    // MouseRegion(
+                    //   cursor: SystemMouseCursors.click,
+                    //   child: Container(
+                    //     decoration: BoxDecoration(
+                    //       color: kPrimaryColor,
+                    //       borderRadius: BorderRadius.circular(8.0),
+                    //     ),
+                    //     height: 48.0,
+                    //     padding: const EdgeInsets.symmetric(
+                    //       horizontal: 28.0,
+                    //     ),
+                    //     child: TextButton(
+                    //       onPressed: () {
+                    //         Utilty.openUrl(AppConstants.linkedInUrl);
+                    //       },
+                    //       child: Text(
+                    //         "Let's Talk!!!!!!!!!!!!!!!!!!!!!!",
+                    //         style: TextStyle(
+                    //           color: Colors.grey[800],
+                    //           fontSize: 13.0,
+                    //           fontWeight: FontWeight.bold,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),
               MouseRegion(
-                cursor: SystemMouseCursors.click,
+                // cursor: SystemMouseCursors.click,
                 child: SizedBox(
                   height: carouselContainerHeight - 70,
                   child: Row(

@@ -29,7 +29,7 @@ class HeaderLogo extends StatelessWidget {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: "A ",
+                    text: "K /",
                     style: GoogleFonts.josefinSans(
                       fontSize: 26.0,
                       fontWeight: FontWeight.bold,
@@ -40,7 +40,7 @@ class HeaderLogo extends StatelessWidget {
                     ),
                   ),
                   TextSpan(
-                    text: "Dev",
+                    text: " A",
                     style: GoogleFonts.josefinSans(
                       color: kPrimaryColor,
                       fontSize: 26.0,
@@ -98,7 +98,7 @@ class HeaderRow extends StatelessWidget {
         NameOnTap(
           title: "Themes",
           onTap: () {
-            Utilty.openUrl(AppConstants.mediumUrl);
+            // Utilty.openUrl(AppConstants.mediumUrl);
           },
           iconData: Icons.light_mode_outlined,
           isDarkTheme: true,

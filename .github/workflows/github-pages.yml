@@ -37,7 +37,7 @@ jobs:
         working-directory: ./pages/3
         run: flutter build web --web-renderer canvaskit --release --dart-define=BROWSER_IMAGE_DECODING_ENABLED=false --base-href /pages/3/
       - name: mvPublic
-        run: mv bases public/ && mv ./examples/flttr/build/web public/examples/flttr && mv index.html public/ && mkdir public/pages && mv pages/1 public/pages/1 && mv pages/2 public/pages/2 && mkdir public/pages/3 && mv ./pages/3/build/web public/pages/3
+        run: mv bases public/ && mv ./examples/flttr/build/web public/examples/flttr && mv index.html public/ && mkdir public/pages && mv pages/1 public/pages/1 && mv pages/2 public/pages/2 && mkdir public/pages/3 && mv ./pages/3/build/web/* public/pages/3
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

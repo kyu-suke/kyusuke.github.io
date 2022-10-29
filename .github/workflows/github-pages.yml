@@ -33,7 +33,7 @@ jobs:
       - name: buildFlutterSamples
         working-directory: ./examples/flttr
         run: flutter build web --web-renderer canvaskit --release --dart-define=BROWSER_IMAGE_DECODING_ENABLED=false --base-href /examples/flttr/
-      - name: pageAt3
+      - name: buildPageAt3
         working-directory: ./pages/3
         run: flutter build web --web-renderer canvaskit --release --dart-define=BROWSER_IMAGE_DECODING_ENABLED=false --base-href /pages/3/
       - name: mvPublic

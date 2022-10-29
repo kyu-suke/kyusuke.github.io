@@ -34,7 +34,7 @@ jobs:
         working-directory: ./examples/flttr
         run: flutter build web --web-renderer canvaskit --release --dart-define=BROWSER_IMAGE_DECODING_ENABLED=false --base-href /examples/flttr/
       - name: mvPublic
-        run: mkdir public && mkdir public/examples && mv assets public/ && mv bases public/ && mv ./examples/flttr/build/web public/examples/flttr && mv index.html public/ && mv pages public/ && mv web public/
+        run: mv assets public/ && mv bases public/ && mv ./examples/flttr/build/web public/examples/flttr && mv index.html public/ && mv pages public/ && mv web public/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

@@ -1,0 +1,44 @@
+body {
+	background: #212529;
+	color: #fff;
+	height: 100%;
+}
+
+#main {
+	height: 100%;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.nes-container.is-rounded.is-dark {
+	border-image-repeat: inherit;
+}
+
+.nes-container.is-dark.secondWindow {
+	position: absolute;
+	top: 100px;
+	left: 85px;
+}
+
+.container .nes-container div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    margin: 0 10px;
+}
+
+.hidden {
+	display: none;
+}
+
+.message-list.baloon {
+    position: absolute;
+    z-index: 999;
+    bottom: 105px;
+    left: 55px;
+}

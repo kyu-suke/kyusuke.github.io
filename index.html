@@ -1,58 +1,62 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/kyu-suke.github.io/">
-
   <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="flttr">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>flttr</title>
-  <link rel="manifest" href="manifest.json">
-
+  <link rel="shortcut icon" href="bases/icon.ico">
+  <title>kyusuke/apmewj</title>
   <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = '3687592285';
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
-</head>
-<body>
-  <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
+    const pages = {
+        1: {
+            html: "pages/1/index.html",
+            pre: ["pages/1/js.js"],
+            aft: ["pages/1/init.js"],
+        },
+        2: {
+            html: "pages/2/index.html",
+            pre: ["https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"],
+            aft: ["pages/2/js.js"],
+        },
+        3: {
+            html: "pages/3/build/web/index.html",
+            pre: ["pages/3/build/web/main.dart.js"],
+            aft: [],
         }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
-      });
-    });
+    }
+    function render(key) {
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", pages[key].html, true);
+        rawFile.onreadystatechange = function() {
+            if (rawFile.readyState === 4) {
+                var allText = rawFile.responseText;
+                document.getElementById("main").innerHTML = allText;
+                for (src of pages[key].pre) {
+                    let sc = document.createElement("script")
+                    sc.setAttribute("src", src);
+                    document.body.append(sc)
+                }
+                setTimeout(function() {
+                    for (src of pages[key].aft) {
+                        let sc = document.createElement("script")
+                        sc.setAttribute("src", src);
+                        document.body.append(sc)
+                    }
+                } , 100)
+            }
+        }
+        rawFile.send();
+    }
+    window.onload = function() {
+      const keys = [1, 2, 3]
+      const k = keys[Math.floor(Math.random()*keys.length)];
+      render(k)
+    };
   </script>
+</head>
+
+<body>
+  <div id="main"></div>
 </body>
 </html>
+
+
+

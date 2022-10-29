@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="yes"?><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+<channel>
+<title>sparkleSample</title>
+<item>
+<title>1.0</title>
+<pubDate>日, 06 1月 2019 17:20:09 +0900</pubDate>
+<sparkle:minimumSystemVersion>10.14</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/kyu-suke/sparkleSample/releases/download/1.1/sparkleSample.zip" sparkle:version="1.1" sparkle:shortVersionString="1.1" length="5063515" type="application/octet-stream" sparkle:edSignature="BCSgQnCh+dHkRK7BLjlsUY+BbQIfV+atjiKiX2F0ohFAuq7aCjXd/m+EQcIjDePwhJ+3KwOdOyhkRIN5Rix+CQ=="/></item>
+</channel></rss>

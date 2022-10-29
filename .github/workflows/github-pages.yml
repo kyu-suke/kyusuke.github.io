@@ -1,0 +1,45 @@
+name: github pages
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Repository
+        id: version
+        run: |
+          REPOSITORY=$(echo ${{ github.repository }} | sed -e "s#.*/##")
+          echo ::set-output name=repository::$REPOSITORY
+      - name: Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.3.5'
+          channel: 'stable'
+          cache: true
+      - run: flutter --version
+      - name: pubget
+        working-directory: ./examples/flttr
+        run: flutter pub get
+      - name: build
+        working-directory: ./examples/flttr
+        run: flutter build web --web-renderer canvaskit --release --dart-define=BROWSER_IMAGE_DECODING_ENABLED=false --base-href /examples/flttr/
+      - name: mvPublic
+        run: mkdir public && mkdir public/examples && mv assets public/ && mv bases public/ && mv ./examples/flttr/build/web public/examples/flttr && mv index.html public/ && mv pages public/ && mv web public/
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+            #publish_dir: ./examples/flttr/build/web
+          publish_dir: ./public
+

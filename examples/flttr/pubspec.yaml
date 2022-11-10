@@ -41,6 +41,7 @@ dependencies:
   universal_html: ^2.0.8
   url_launcher: ^6.1.6
   image_picker_web: ^2.1.1
+  image: ^3.2.2
 
 #  f_glitch: ^0.1.0
   f_glitch:

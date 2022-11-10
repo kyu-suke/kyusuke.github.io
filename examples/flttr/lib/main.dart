@@ -1,4 +1,5 @@
 import 'package:flttr/glitch.dart';
+import 'package:flttr/pixel.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,17 +32,18 @@ class Examples extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Examples"),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: const [
-            SizedBox(height: 10,),
-            SizedBox(
-              width: 700,
-              height: 800,
-              child: Glitch(),
-            ),
-            SizedBox(height: 20,),
-          ],
+      body: Container(
+        padding: const EdgeInsets.all(10),
+        child: SingleChildScrollView(
+          child: Column(
+            children: const [
+              SizedBox(height: 20,),
+              Pixel(),
+              SizedBox(height: 20,),
+              Glitch(),
+              SizedBox(height: 20,),
+            ],
+          ),
         ),
       ),
     );
